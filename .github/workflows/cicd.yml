@@ -1,3 +1,4 @@
+# .github/workflows/cicd.yml
 name: CI/CD Workflow
 
 on:
@@ -12,14 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Call the checkout workflow
+      # Call the checkout workflow from the original repository
       - name: Checkout
         uses: ankgoya1/pr/.github/workflows/checkout.yml@main
 
-      # Call the build workflow
+      # Call the build workflow from the original repository
       - name: Build
         uses: ankgoya1/pr/.github/workflows/build.yml@main
 
-      # Call the publish workflow
+      # Call the publish workflow from the original repository
       - name: Publish
         uses: ankgoya1/pr/.github/workflows/publish.yml@main
