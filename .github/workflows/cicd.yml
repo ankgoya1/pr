@@ -3,7 +3,7 @@ name: CI/CD Workflow
 on:
   push:
     branches:
-      - !main
+      - dev
 jobs:
   Checkout:
     uses: ankgoya1/pr/.github/workflows/checkout.yml@main
