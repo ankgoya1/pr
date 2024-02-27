@@ -12,15 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Add your build steps here
-      - name: Build your project
+      - name: Publish
         run: |
-          # Your build commands go here
-          echo "Building your project..."
+          echo "Publishing the Artifacts..."
 
-      # Publish artifacts
-      - name: Publish Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: my-artifact
-          path: path/to/your/artifact
