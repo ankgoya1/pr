@@ -15,6 +15,6 @@ jobs:
         run: |
           # Your build commands go here
           echo "Performing maven clean test...."
-          maven clean test
+          mvn clean test
           echo "Performing maven clean package...."
-          maven clean package -DskipTests
+          mvn clean package -DskipTests
