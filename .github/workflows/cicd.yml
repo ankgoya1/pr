@@ -12,14 +12,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-  # Call the checkout workflow
-  checkout:
-    uses: ./.github/workflows/checkout.yml
+      # Call the checkout workflow
+      - name: Checkout
+        uses: ./.github/workflows/checkout.yml
 
-  # Call the build workflow
-  build:
-    uses: ./.github/workflows/build.yml
+      # Call the build workflow
+      - name: Build
+        uses: ./.github/workflows/build.yml
 
-  # Call the publish workflow
-  publish:
-    uses: ./.github/workflows/publish.yml
+      # Call the publish workflow
+      - name: Publish
+        uses: ./.github/workflows/publish.yml
