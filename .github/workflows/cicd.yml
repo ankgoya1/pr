@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
 jobs:
   ci-cd:
     runs-on: ubuntu-latest
@@ -12,20 +11,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Call the checkout job directly
+      # Call the checkout workflow from the original repository
       - name: Checkout
-        run: |
-          # Run the checkout steps here directly
-          echo "Checking out code..."
+        uses: ankgoya1/pr/.github/workflows/checkout.yml@main
 
-      # Call the build job directly
+      # Call the build workflow from the original repository
       - name: Build
-        run: |
-          # Run the build steps here directly
-          echo "Building your project..."
+        uses: ankgoya1/pr/.github/workflows/build.yml@main
 
-      # Call the publish job directly
+      # Call the publish workflow from the original repository
       - name: Publish
-        run: |
-          # Run the publish steps here directly
-          echo "Publishing the Artifacts..."
+        uses: ankgoya1/pr/.github/workflows/publish.yml@main
