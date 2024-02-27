@@ -5,20 +5,11 @@ on:
     branches:
       - main
 jobs:
-  ci-cd:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  Checkout:
+    uses: ankgoya1/pr/.github/workflows/checkout.yml@main
 
-      # Call the checkout workflow from the original repository
-      - name: Checkout
-        uses: ankgoya1/pr/.github/workflows/checkout.yml@main
+  Build:
+    uses: ankgoya1/pr/.github/workflows/build.yml@main
 
-      # Call the build workflow from the original repository
-      - name: Build
-        uses: ankgoya1/pr/.github/workflows/build.yml@main
-
-      # Call the publish workflow from the original repository
-      - name: Publish
-        uses: ankgoya1/pr/.github/workflows/publish.yml@main
+  Publish:
+    uses: ankgoya1/pr/.github/workflows/publish.yml@main
