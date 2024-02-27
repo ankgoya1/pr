@@ -12,14 +12,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-  # Call the checkout workflow from the original repository
-  chekout:
-    uses: ankgoya1/pr/.github/workflows/checkout.yml@main
+  # Call the checkout workflow
+  checkout:
+    uses: ./.github/workflows/checkout.yml
 
-  # Call the build workflow from the original repository
-  Build:
-    uses: ankgoya1/pr/.github/workflows/build.yml@main
+  # Call the build workflow
+  build:
+    uses: ./.github/workflows/build.yml
 
-  # Call the publish workflow from the original repository
-  Publish:
-    uses: ankgoya1/pr/.github/workflows/publish.yml@main
+  # Call the publish workflow
+  publish:
+    uses: ./.github/workflows/publish.yml
