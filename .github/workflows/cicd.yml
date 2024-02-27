@@ -1,0 +1,25 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci-cd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Call the checkout workflow
+      - name: Checkout
+        uses: ./.github/workflows/checkout.yml
+
+      # Call the build workflow
+      - name: Build
+        uses: ./.github/workflows/build.yml
+
+      # Call the publish workflow
+      - name: Publish
+        uses: ./.github/workflows/publish.yml
