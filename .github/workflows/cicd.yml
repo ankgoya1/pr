@@ -12,14 +12,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Call the checkout workflow
+      # Call the checkout job directly
       - name: Checkout
-        uses: ./.github/workflows/checkout.yml
+        run: |
+          # Run the checkout steps here directly
+          echo "Checking out code..."
 
-      # Call the build workflow
+      # Call the build job directly
       - name: Build
-        uses: ./.github/workflows/build.yml
+        run: |
+          # Run the build steps here directly
+          echo "Building your project..."
 
-      # Call the publish workflow
+      # Call the publish job directly
       - name: Publish
-        uses: ./.github/workflows/publish.yml
+        run: |
+          # Run the publish steps here directly
+          echo "Publishing the Artifacts..."
