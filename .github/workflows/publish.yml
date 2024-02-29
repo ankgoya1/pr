@@ -2,7 +2,10 @@ name: Publish Artifact Workflow
 
 on:
   workflow_call:
-  
+    inputs:
+      VAR:
+        required: true
+        type: string  
 jobs:
   publish:
     runs-on: ubuntu-latest
