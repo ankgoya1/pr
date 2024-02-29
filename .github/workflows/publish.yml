@@ -16,6 +16,6 @@ jobs:
     steps:
       - name: Debug
         run: |
-          echo "Received VAR: ${{ github.event.inputs.VAR }}"
+          # echo "Received VAR: ${{ github.event.inputs.VAR }}"
           printenv # Print all environment variables for further debugging
           echo "value is ${{ secrets.token }}"
