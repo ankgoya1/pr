@@ -6,9 +6,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    env:
-      MY_VAR: ${{ github.event.inputs.MY_VAR }}
-      USER: ${{ github.event.inputs.USER }}
+    # env:
+    #   MY_VAR: ${{ github.event.inputs.MY_VAR }}
+    #   USER: ${{ github.event.inputs.USER }}
     steps:
       # - name: Checkout code
       #   uses: actions/checkout@v2
