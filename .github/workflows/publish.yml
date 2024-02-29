@@ -26,5 +26,5 @@ jobs:
       - name: Publish
         run: |
           echo "Publishing the Artifacts..."
-          echo "Variable value is $Secret"
+          echo "Variable value is $VAR"
           # echo "Secret value is ${{ github.event.inputs.USER_SECRET }}"
