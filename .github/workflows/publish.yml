@@ -17,4 +17,4 @@ jobs:
         run: |
           echo "Publishing the Artifacts..."
           echo "variable value is $MY_VAR"
-          echo "secret value is $USER"
+          echo "secret value is ${{ secrets.USER }}"
