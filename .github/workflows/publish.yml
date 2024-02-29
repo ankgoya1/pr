@@ -6,6 +6,8 @@ on:
       VAR:
         required: true
         type: string  
+env:
+  Secret: ${{ secrets.USER }}
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -19,5 +21,5 @@ jobs:
       - name: Publish
         run: |
           echo "Publishing the Artifacts..."
-          echo "variable value is $VAR"
+          echo "variable value is $Secret"
           # echo "secret value is $USER"
