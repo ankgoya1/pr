@@ -7,14 +7,11 @@ on:
         required: true
         type: string
 
-env:
-  Secret: ${{ github.event.inputs.VAR }}
-  
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Publish
+      - name: Debug
         run: |
-          echo "Publishing the Artifacts..."
-          echo "Variable value is ${{ github.event.inputs.VAR }}"
+          echo "Received VAR: ${{ github.event.inputs.VAR }}"
+          printenv # Print all environment variables for further debugging
