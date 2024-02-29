@@ -20,7 +20,7 @@ jobs:
         run: |
           # Your build commands go here
           echo "Listing out the content...."
-          ls -lare
+          ls -latr
           echo "Performing maven clean test...."
           mvn clean test
           echo "Performing maven clean package...."
