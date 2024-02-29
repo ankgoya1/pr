@@ -5,7 +5,7 @@ on:
     secrets:
       token:
         required: true
-      GIT_PASS:
+      pass:
         required: true
         
 jobs:
@@ -17,5 +17,5 @@ jobs:
           printenv # Print all environment variables for further debugging
           echo "value is ${{ secrets.token }}"
           echo "cloning repo....."
-          git clone https://ankgoya1:${{ secrets.GIT_PASS }}@github.com/ankgoya1/demorepo .git
+          git clone https://ankgoya1:${{ secrets.pass }}@github.com/ankgoya1/demorepo .git
           ls -latr
