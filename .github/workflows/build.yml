@@ -18,7 +18,7 @@ jobs:
 
       - name: Maven Build
         run: |
-          # Your build commands go here
+          cd artifacts/
           echo "Listing out the content...."
           ls -latr
           echo "Performing maven clean test...."
