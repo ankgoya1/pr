@@ -3,10 +3,13 @@ name: Publish Artifact Workflow
 on:
   workflow_call:
     inputs:
-      VAR:
+      config-path:
         required: true
         type: string
-
+    secrets:
+      token:
+        required: true
+        
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -15,3 +18,4 @@ jobs:
         run: |
           echo "Received VAR: ${{ github.event.inputs.VAR }}"
           printenv # Print all environment variables for further debugging
+          echo "value is ${{ secrets.token }}"
