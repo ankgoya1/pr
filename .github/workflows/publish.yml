@@ -13,3 +13,4 @@ jobs:
       - name: Publish
         run: |
           echo "Publishing the Artifacts..."
+          echo "variable value is ${{ env.My_Var }}"
