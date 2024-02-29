@@ -3,12 +3,9 @@ name: Publish Artifact Workflow
 on:
   workflow_call:
     inputs:
-      config-path:
-        required: true
-        type: string
-      VAR:
-        required: true
-        type: string
+      # config-path:
+      #   required: true
+      #   type: string
     secrets:
       token:
         required: true
@@ -20,6 +17,6 @@ jobs:
     steps:
       - name: Debug
         run: |
-          echo "Received VAR: ${{ VAR }}"
+          # echo "Received VAR: ${{ VAR }}"
           printenv # Print all environment variables for further debugging
           echo "value is ${{ secrets.token }}"
