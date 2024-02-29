@@ -6,9 +6,6 @@ on:
       VAR:
         required: true
         type: string
-      # USER_SECRET:
-      #   required: true
-      #   type: string
 
 env:
   Secret: ${{ github.event.inputs.VAR }}
@@ -16,15 +13,8 @@ env:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    # env:
-    #   MY_VAR: ${{ github.event.inputs.MY_VAR }}
-    #   USER: ${{ github.event.inputs.USER }}
     steps:
-      # - name: Checkout code
-      #   uses: actions/checkout@v2
-
       - name: Publish
         run: |
           echo "Publishing the Artifacts..."
-          echo "Variable value is $VAR"
-          # echo "Secret value is ${{ github.event.inputs.USER_SECRET }}"
+          echo "Variable value is ${{ github.event.inputs.VAR }}"
