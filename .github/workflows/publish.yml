@@ -2,7 +2,7 @@ name: Publish Artifact Workflow
 
 on:
   workflow_call:
-    inputs:
+    # inputs:
       # config-path:
       #   required: true
       #   type: string
