@@ -6,9 +6,9 @@ on:
       VAR:
         required: true
         type: string
-      USER_SECRET:
-        required: true
-        type: string
+      # USER_SECRET:
+      #   required: true
+      #   type: string
 
 env:
   Secret: ${{ github.event.inputs.VAR }}
@@ -27,4 +27,4 @@ jobs:
         run: |
           echo "Publishing the Artifacts..."
           echo "Variable value is $Secret"
-          echo "Secret value is ${{ github.event.inputs.USER_SECRET }}"
+          # echo "Secret value is ${{ github.event.inputs.USER_SECRET }}"
