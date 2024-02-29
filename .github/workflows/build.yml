@@ -29,6 +29,6 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
+          name: my-artifact1
           path: artifacts/target/*.jar
           retention-days: 2
