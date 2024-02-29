@@ -9,11 +9,18 @@ jobs:
     steps:
       # - name: Checkout code
       #   uses: actions/checkout@v2
+      
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+          path: ./artifacts
 
-      # Add your build steps here
       - name: Maven Build
         run: |
           # Your build commands go here
+          echo "Listing out the content...."
+          ls -lare
           echo "Performing maven clean test...."
           mvn clean test
           echo "Performing maven clean package...."
