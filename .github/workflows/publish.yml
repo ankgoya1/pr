@@ -7,6 +7,8 @@ on:
         required: true
       pass:
         required: true
+      my_var:
+        description: 'Value to be echoed'   
         
 jobs:
   publish:
@@ -16,6 +18,7 @@ jobs:
         run: |
           printenv # Print all environment variables for further debugging
           echo "value is ${{ secrets.token }}"
+          echo "Value received in checkout workflow: ${{ github.event.inputs.my_var }}"
           echo "cloning repo....."
           git clone https://ankgoya1:${{ secrets.pass }}@github.com/ankgoya1/demorepo.git
           ls -latr
