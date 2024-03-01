@@ -18,7 +18,6 @@ jobs:
     steps:
       - name: Debug
         run: |
-          printenv # Print all environment variables for further debugging
           echo "value is ${{ secrets.token }}"
           echo "This pipeline has been trigger by ${{ inputs.user }}"
           echo "cloning repo....."
