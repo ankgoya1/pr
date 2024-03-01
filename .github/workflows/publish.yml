@@ -21,4 +21,5 @@ jobs:
           echo "Value received in checkout workflow: ${{ github.event.inputs.my_var }}"
           echo "cloning repo....."
           git clone https://ankgoya1:${{ secrets.pass }}@github.com/ankgoya1/demorepo.git
+          cd demorepo
           ls -latr
