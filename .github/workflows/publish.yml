@@ -13,6 +13,8 @@ on:
         type: string 
       name: 
         type: string 
+      mname:
+        type: string
         
 jobs:
   publish:
@@ -21,7 +23,7 @@ jobs:
       - name: Debug
         run: |
           echo "value is ${{ secrets.token }}"
-          echo "This pipeline has been trigger by ${{ inputs.user }} ${{ inputs.name }}"
+          echo "This pipeline has been trigger by ${{ inputs.user }} ${{ inputs.mname }} ${{ inputs.name }}"
           echo "cloning repo....."
           git clone https://ankgoya1:${{ secrets.pass }}@github.com/ankgoya1/demorepo.git
           cd demorepo
