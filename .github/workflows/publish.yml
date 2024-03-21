@@ -1,6 +1,17 @@
 name: Publish Artifact Workflow
 
 on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        description: Environment
+      full:
+        type: boolean
+        description: Deploy ALL environments
+      cloud:
+        type: boolean
+        description: Cloud runner (default false)
   workflow_call:
     secrets:
       token:
