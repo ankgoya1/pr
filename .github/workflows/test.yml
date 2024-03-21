@@ -1,0 +1,17 @@
+name: Example Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  use-repoA-secret:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Trigger Workflow in repoA
+      uses: peter-evans/repository-dispatch@v1
+      with:
+        token: ${{ secrets.GIT_PASS  }}
+        repository: ankgoya1/App1
+        event-type: use-secret
+        client-payload: '{"secretName": "GIT_PASS "}'
