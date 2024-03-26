@@ -29,7 +29,11 @@ jobs:
       - name: Check for label
         id: env
         run: |
-          echo "::set-output name=label::core_main"
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            echo "::set-output name=label::core_main"
+          else 
+            echo "::set-output name=label::core_dev"
+          fi
 
   Version:
     runs-on: ubuntu-latest
@@ -39,9 +43,7 @@ jobs:
     steps:
     - name: get environment
       run: |   
-        if [ "${{ github.ref }}" == "refs/heads/main" ]; then
           echo ${{ env.isenvironment }}
-        fi
 
 # name: Publish Artifact Workflow
 
