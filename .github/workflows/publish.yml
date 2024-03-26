@@ -32,6 +32,12 @@ on:
         
         
 jobs:
+
+  Initialization:
+    runs-on: [ windows-latest ]
+    outputs:
+      telemetryScopeJson: ${{ steps.init.outputs.telemetryScopeJson }}
+      
   publish:
     runs-on: ubuntu-latest
     if: github.event_name == 'release'
@@ -58,3 +64,4 @@ jobs:
             ls -latr
             cd demorepo
             ls -latr
+            echo ${{ ${{ steps.init.outputs.telemetryScopeJson }} }}
