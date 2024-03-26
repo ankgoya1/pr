@@ -37,26 +37,27 @@ jobs:
     runs-on: ubuntu-latest
     # if: github.event_name == 'release'
     steps:
-      # - name: Debug
-      #   run: |
-      #     echo "value is ${{ secrets.token }}"
-      #     echo "This pipeline has been trigger by ${{ inputs.user }} ${{ inputs.mname }} ${{ inputs.name }}"
-      #     echo "cloning repo....."
-          #   git clone https://ankgoya1:${{ secrets.pass }}@github.com/ankgoya1/demorepo.git
-          # cd demorepo
-          # ls -latr
+      - name: Debug
+        run: |
+          echo "value is ${{ secrets.token }}"
+          echo "This pipeline has been trigger by ${{ inputs.user }} ${{ inputs.mname }} ${{ inputs.name }}"
+          echo "cloning repo....."
+            git clone https://ankgoya1:${{ secrets.pass }}@github.com/ankgoya1/demorepo.git
+          cd demorepo
+          ls -latr
+          echo ${{ inputs.environment }}
 
-      - name: Trigger Workflow in repoA
-        # uses: peter-evans/repository-dispatch@v1
-        with:
-          token: ${{ secrets.GIT_PASS }}
-          repository: ankgoya1/App1
-          event-type: use-secret
-          client-payload: '{"secretName": "GIT_PASS"}'
-          run: | 
-            echo "value is ${{ secrets.token }}"
-            git clone https://ankgoya1:$token@github.com/ankgoya1/demorepo.git
-            ls -latr
-            cd demorepo
-            ls -latr
-            echo ${{ inputs.environment }}
+      # - name: Trigger Workflow in repoA
+      #   # uses: peter-evans/repository-dispatch@v1
+      #   with:
+      #     token: ${{ secrets.GIT_PASS }}
+      #     repository: ankgoya1/App1
+      #     event-type: use-secret
+      #     client-payload: '{"secretName": "GIT_PASS"}'
+      #     run: | 
+      #       echo "value is ${{ secrets.token }}"
+      #       git clone https://ankgoya1:$token@github.com/ankgoya1/demorepo.git
+      #       ls -latr
+      #       cd demorepo
+      #       ls -latr
+            # echo ${{ inputs.environment }}
