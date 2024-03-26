@@ -29,8 +29,11 @@ jobs:
       - name: Check for label
         id: env
         run: |
-          echo "::set-output name=label::core_dev"
-
+          if: github.ref == 'refs/heads/main'
+            echo "::set-output name=label::core_dev"
+          else:
+            echo "::set-output name=label::core_uat"
+  
       - name: Set environment variable
         run: |
           echo "ISENVIRONMENT=${{ steps.env.outputs.label }}" >> $GITHUB_ENV
