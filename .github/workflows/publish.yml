@@ -38,10 +38,12 @@ jobs:
   Version:
     runs-on: ubuntu-latest
     needs: Initialization
+    env:
+      isenvironment: ${{ needs.Initialization.outputs.environment }}
     steps:
     - name: get environment
       run: |   
-        echo $ISENVIRONMENT
+        echo env.isenvironment
 
 # name: Publish Artifact Workflow
 
