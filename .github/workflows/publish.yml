@@ -50,6 +50,8 @@ jobs:
     env:
       isenvironment: ${{ needs.Initialization.outputs.environment }}
     name: Deploy to ${{ needs.Initialization.outputs.environment }}
+    environment:
+      name: ${{ needs.Initialization.outputs.environments }}
     steps:
     - name: get environment
       run: |   
