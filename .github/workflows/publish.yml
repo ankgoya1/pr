@@ -48,7 +48,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: Initialization
     env:
-      isenvironment: ${{ needs.Initialization.outputs.environment }}
+      isenvironment: ${{ needs.Initialization.outputs.environment }}'
+    name: Deploy to ${{ env.isenvironment }}
     steps:
     - name: get environment
       run: |   
