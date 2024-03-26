@@ -8,7 +8,7 @@ on:
         description: Environment
       full:
         type: boolean
-        description: Deploy ALL environments
+        description: Deploy ALL environments.
       cloud:
         type: boolean
         description: Cloud runner (default false)
