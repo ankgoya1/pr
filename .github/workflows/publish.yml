@@ -43,7 +43,7 @@ jobs:
     steps:
     - name: get environment
       run: |   
-        echo env.isenvironment
+        echo ${{ env.isenvironment }}
 
 # name: Publish Artifact Workflow
 
