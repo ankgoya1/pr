@@ -28,6 +28,7 @@ jobs:
     runs-on: windows-latest
     outputs:
       environment: ${{ steps.env.outputs.label }}
+    name: Deploy to ${{ env.isenvironment }}  
     steps:
       - name: Check for label
         id: env
