@@ -64,4 +64,4 @@ jobs:
             ls -latr
             cd demorepo
             ls -latr
-            echo ${{ ${{ steps.init.outputs.telemetryScopeJson }} }}
+            echo ${{ inputs.environment }}
