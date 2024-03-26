@@ -30,17 +30,17 @@ jobs:
 
       - name: Set environment variable
         run: |
-          echo "ENVIRONMENT=${{ steps.env.outputs.label }}" >> $env:GITHUB_ENV
+          echo "ISENVIRONMENT=${{ steps.env.outputs.label }}" >> $env:GITHUB_ENV
 
   Version:
     runs-on: [ ubuntu-latest ]
     needs: [ Initialization ]
     env:
-      environment: ${{ needs.Initialization.outputs.hotfix }}
+      environment: ${{ needs.Initialization.outputs.environment }}
     steps:
     - name: get environment
       run: |   
-        echo ${{ env.environment }}
+        echo ${{ env.isenvironment }}
 
 
   # publish:
