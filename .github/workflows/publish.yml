@@ -20,7 +20,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.head_ref == 'dev'
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.head_ref == 'main'
     steps:
       - name: Set Environment
         run: echo "::set-env name=DEPLOY_ENVIRONMENT::core_dev"
