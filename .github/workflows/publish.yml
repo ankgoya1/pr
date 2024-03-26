@@ -31,8 +31,6 @@ jobs:
         run: |
             if: github.ref == 'refs/heads/main'
             echo "::set-output name=label::core_main"
-            if: github.ref == 'refs/heads/feature/ankit'
-            echo "::set-output name=label::core_dev"
   
       # - name: Set environment variable
       #   run: |
