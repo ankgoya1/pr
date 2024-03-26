@@ -29,11 +29,17 @@ jobs:
       - name: Check for label
         id: env
         run: |
-          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
-            echo "::set-output name=label::core_main"
-          else 
+          # if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+          #   echo "::set-output name=label::core_main"
+          # else 
+          #   echo "::set-output name=label::core_dev"
+          # fi
+          
+          if ($env:GITHUB_REF -eq "refs/heads/main") {
+          echo "::set-output name=label::core_main"
+          } else {
             echo "::set-output name=label::core_dev"
-          fi
+          }
 
   Version:
     runs-on: ubuntu-latest
