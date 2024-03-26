@@ -41,10 +41,14 @@ jobs:
     needs: Initialization
     env:
       isenvironment: ${{ needs.Initialization.outputs.environment }}
+    defaults:
+      run: 
+        shell: bash      
     steps:
     - name: get environment
       run: |   
-        echo ${{ env.isenvironment }}
+        if: github.ref == 'refs/heads/main'
+          echo ${{ env.isenvironment }}
 
 # name: Publish Artifact Workflow
 
