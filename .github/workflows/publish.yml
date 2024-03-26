@@ -28,7 +28,7 @@ jobs:
       - name: Check for label
         id: env
         run: |
-          echo "label=$(echo 'core_dev')" >> $env:GITHUB_OUTPUT
+          echo "label=core_dev" >> $env:GITHUB_OUTPUT
           echo $label
 
       - name: Set environment variable
