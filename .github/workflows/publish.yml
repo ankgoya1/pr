@@ -39,6 +39,7 @@ jobs:
       environment: ${{ needs.Initialization.outputs.hotfix }}
     steps:
     - name: get environment
+      run: |   
         echo ${{ env.environment }}
 
 
