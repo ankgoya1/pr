@@ -8,61 +8,92 @@ on:
         description: Environment
       full:
         type: boolean
-        description: Deploy ALL environments
+        description: Deploy ALL environments.
       cloud:
         type: boolean
         description: Cloud runner (default false)
   release:
     types: [created]
   pull_request:
-    branches: [ "main" ]
-    types:
-      - closed
-    
-  workflow_call:
-    secrets:
-      token:
-        required: true
-      pass:
-        required: true
-    inputs:    
-      user:
-        description: Flag indicating whether the apps should be signed
-        type: string 
-      name: 
-        type: string 
-      mname:
-        type: string
-        
-        
+    types: [closed]
+
 jobs:
-      
   publish:
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.head_ref == 'dev'
     steps:
-      - name: Debug Event Payload
-        if: github.event_name == 'pull_request'
-        run: |
-          echo "Pull request event payload: $GITHUB_EVENT_PATH"
-          cat "$GITHUB_EVENT_PATH"
-      
-      - name: Debug Inputs
-        if: github.event_name == 'pull_request'
-        run: |
-          echo "Environment input: ${{ inputs.environment }}"
-          echo "User input: ${{ inputs.user }}"
-          echo "Name input: ${{ inputs.name }}"
-          echo "Mname input: ${{ inputs.mname }}"
+      - name: Set Environment
+        run: echo "::set-env name=DEPLOY_ENVIRONMENT::core_dev"
 
       - name: Debug
         run: |
-          echo "value is ${{ secrets.token }}"
-          echo "This pipeline has been trigger by ${{ inputs.user }} ${{ inputs.mname }} ${{ inputs.name }}"
-          echo "cloning repo....."
-          git clone https://ankgoya1:${{ secrets.pass }}@github.com/ankgoya1/demorepo.git
-          cd demorepo
-          ls -latr
-          echo ${{ inputs.environment }}
+          echo "Environment: $DEPLOY_ENVIRONMENT"
+
+# name: Publish Artifact Workflow
+
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       environment:
+#         type: environment
+#         description: Environment
+#       full:
+#         type: boolean
+#         description: Deploy ALL environments
+#       cloud:
+#         type: boolean
+#         description: Cloud runner (default false)
+#   release:
+#     types: [created]
+#   pull_request:
+#     branches: [ "main" ]
+#     types:
+#       - closed
+    
+#   workflow_call:
+#     secrets:
+#       token:
+#         required: true
+#       pass:
+#         required: true
+#     inputs:    
+#       user:
+#         description: Flag indicating whether the apps should be signed
+#         type: string 
+#       name: 
+#         type: string 
+#       mname:
+#         type: string
+        
+        
+# jobs:
+      
+#   publish:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Debug Event Payload
+#         if: github.event_name == 'pull_request'
+#         run: |
+#           echo "Pull request event payload: $GITHUB_EVENT_PATH"
+#           cat "$GITHUB_EVENT_PATH"
+      
+#       - name: Debug Inputs
+#         if: github.event_name == 'pull_request'
+#         run: |
+#           echo "Environment input: ${{ inputs.environment }}"
+#           echo "User input: ${{ inputs.user }}"
+#           echo "Name input: ${{ inputs.name }}"
+#           echo "Mname input: ${{ inputs.mname }}"
+
+#       - name: Debug
+#         run: |
+#           echo "value is ${{ secrets.token }}"
+#           echo "This pipeline has been trigger by ${{ inputs.user }} ${{ inputs.mname }} ${{ inputs.name }}"
+#           echo "cloning repo....."
+#           git clone https://ankgoya1:${{ secrets.pass }}@github.com/ankgoya1/demorepo.git
+#           cd demorepo
+#           ls -latr
+#           echo ${{ inputs.environment }}
 
 
 
