@@ -18,17 +18,41 @@ on:
     types: [closed]
 
 jobs:
-  publish:
+  Initialization:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.ref == 'refs/heads/main'
+    outputs:
+      environment: ${{ steps.env.outputs.label }}
     steps:
-      - name: Set Environment
-        run: echo "::set-env name=DEPLOY_ENVIRONMENT::core_dev"
-
-      - name: Debug
+      - name: Check for label
+        id: env
         run: |
-          echo "Environment: $DEPLOY_ENVIRONMENT"
+          echo "label=$(echo 'core_dev'" >> $env:GITHUB_OUTPUT
 
+      - name: Set environment variable
+        run: |
+          echo "ENVIRONMENT=${{ steps.env.outputs.label }}" >> $env:GITHUB_ENV
+
+  Version:
+    runs-on: [ ubuntu-latest ]
+    needs: [ Initialization ]
+    env:
+      environment: ${{ needs.Initialization.outputs.hotfix }}
+    steps:
+    - name: get environment
+        echo ${{ env.environment }}
+
+
+  # publish:
+  #   runs-on: ubuntu-latest
+  #   if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.ref == 'refs/heads/main'
+  #   steps:
+  #     - name: Set Environment
+  #       run: echo "::set-env name=DEPLOY_ENVIRONMENT::core_dev"
+
+  #     - name: Debug
+  #       run: |
+  #         echo "Environment: $DEPLOY_ENVIRONMENT"
+  
 # name: Publish Artifact Workflow
 
 # on:
