@@ -16,6 +16,9 @@ on:
     types: [created]
   pull_request:
     types: [closed]
+    branches:
+      - main
+      - feature/test
 
 env:
   workflowDepth: 1
