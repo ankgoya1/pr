@@ -28,7 +28,6 @@ jobs:
     runs-on: windows-latest
     outputs:
       environment: ${{ steps.env.outputs.label }}
-    name: Deploy to ${{ steps.env.outputs.label }}
     steps:
       - name: Check for label
         id: env
@@ -50,6 +49,7 @@ jobs:
     needs: Initialization
     env:
       isenvironment: ${{ needs.Initialization.outputs.environment }}
+    name: Deploy to ${{ env.isenvironment }}
     steps:
     - name: get environment
       run: |   
