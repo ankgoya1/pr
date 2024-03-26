@@ -29,7 +29,7 @@ jobs:
       - name: Check for label
         id: env
         run: |
-            if: github.ref == 'refs/heads/main'
+            # if: github.ref == 'refs/heads/main'
             echo "::set-output name=label::core_main"
   
       # - name: Set environment variable
