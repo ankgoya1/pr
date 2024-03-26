@@ -16,7 +16,9 @@ on:
     types: [created]
   pull_request:
     types: [closed]
-
+env:
+  workflowDepth: 1
+  
 jobs:
   Initialization:
     runs-on: ubuntu-latest
@@ -27,6 +29,7 @@ jobs:
         id: env
         run: |
           echo "label=$(echo 'core_dev')" >> $env:GITHUB_OUTPUT
+          echo $label
 
       - name: Set environment variable
         run: |
@@ -40,7 +43,7 @@ jobs:
     steps:
     - name: get environment
       run: |   
-        echo ${{ env.isenvironment }}
+        echo ${{ env.environment }}
 
 
   # publish:
