@@ -24,6 +24,11 @@ env:
   workflowDepth: 1
   
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set custom build number
+        run: echo "BUILD_NUMBER=1800" >> $GITHUB_ENV
   Initialization:
     runs-on: windows-latest
     outputs:
