@@ -4,7 +4,6 @@ on:
   workflow_call:
     inputs:
       myOutput:
-        type: string
 
 jobs:
   job2:
