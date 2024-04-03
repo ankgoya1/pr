@@ -3,7 +3,7 @@ name: Checkout Workflow
 on:
   workflow_call:
     inputs:
-      myOutput: # Define the input expected from the calling workflow
+      myOutput: ${{ steps.step1.outputs.myOutput }}
 
 jobs:
   job1:
