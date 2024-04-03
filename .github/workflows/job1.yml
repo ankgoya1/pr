@@ -1,8 +1,10 @@
 name: Checkout Workflow
 
 on:
-  workflow_call
-  # job1.yml
+  workflow_call:
+    inputs:
+      myOutput: # Define the input expected from the calling workflow
+
 jobs:
   job1:
     runs-on: ubuntu-latest
