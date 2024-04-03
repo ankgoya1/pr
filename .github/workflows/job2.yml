@@ -3,7 +3,8 @@ name: Checkout Workflow
 on:
   workflow_call:
     inputs:
-      myOutput: # Define the input expected from the calling workflow
+      myOutput:
+        type: string
 
 jobs:
   job2:
