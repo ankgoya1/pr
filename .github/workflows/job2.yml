@@ -1,0 +1,11 @@
+name: Checkout Workflow
+
+on:
+  workflow_call
+jobs:
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 2
+        run: |
+          echo "Received output from Job 1: ${{ needs.job1.outputs.myOutput }}"
