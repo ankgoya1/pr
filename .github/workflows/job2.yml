@@ -2,8 +2,10 @@ name: Checkout Workflow
 
 on:
   workflow_call:
-    inputs:
-      myOutput:
+    outputs:
+      workflow_output1:
+        description: "The first job output"
+        value: ${{ jobs.job1.outputs.myOutput }}
 
 jobs:
   job2:
