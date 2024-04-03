@@ -1,11 +1,14 @@
 name: Checkout Workflow
 
 on:
-  workflow_call
+  workflow_call:
+    inputs:
+      myOutput: # Define the input expected from the calling workflow
+
 jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
       - name: Step 2
         run: |
-          echo "Received output from Job 1: ${{ needs.job1.outputs.myOutput }}"
+          echo "Received output from Job 1: ${{ github.event.inputs.myOutput }}"
