@@ -3,7 +3,7 @@ name: Checkout Workflow
 on:
   workflow_call:
     inputs:
-      myOutput: ${{ steps.step1.outputs.myOutput }}
+      myOutput:  # Define the input expected from the calling workflow
 
 jobs:
   job1:
@@ -13,5 +13,4 @@ jobs:
     steps:
       - name: Step 1
         id: step1
-        run: |
-          echo "::set-output name=myOutput::Hello from Job 1"
+        run: echo "::set-output name=myOutput::Hello from Job 1"
