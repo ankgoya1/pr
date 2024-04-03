@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Step 2
         run: |
-          echo "Received output from Job 1: ${{ github.event.inputs.myOutput }}"
+          echo "Received output from Job 1: ${{ github.event.outputs.workflow_output1 }}"
