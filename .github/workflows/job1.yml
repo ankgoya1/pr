@@ -1,0 +1,14 @@
+name: Checkout Workflow
+
+on:
+  workflow_call
+  # job1.yml
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      myOutput: ${{ steps.step1.outputs.myOutput }}
+    steps:
+      - name: Step 1
+        id: step1
+        run: echo "::set-output name=myOutput::Hello from Job 1"
