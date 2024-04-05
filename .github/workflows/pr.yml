@@ -1,0 +1,35 @@
+name: Create and Merge PR from Dev to QA
+
+on:
+  push:
+    branches:
+      - qa
+
+jobs:
+  create_and_merge_pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create and Merge Pull Request
+        run: |
+          token="${{ secrets.GIT_PASS }}"
+          base="qa"
+          head="main"
+          title="Merge from dev to qa"
+          body="This pull request is automatically generated to merge changes from dev to qa."
+
+          # Create Pull Request
+          pr_response=$(curl -X POST \
+            -H "Authorization: token $token" \
+            -d '{"title":"'"$title"'","body":"'"$body"'","head":"'"$head"'","base":"'"$base"'"}' \
+            https://api.github.com/repos/${{ github.repository }}/pulls)
+
+          pr_number=$(echo $pr_response | jq -r '.number')
+
+          # Merge Pull Request
+          curl -X PUT \
+            -H "Authorization: token $token" \
+            https://api.github.com/repos/${{ github.repository }}/pulls/$pr_number/merge
