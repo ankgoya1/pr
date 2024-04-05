@@ -15,7 +15,7 @@ jobs:
 
       - name: Create and Merge Pull Request
         run: |
-          token="${{ secrets.GIT_PASS }}"
+          token="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"
           base="qa"
           head="main"
           title="Merge from dev to qa"
