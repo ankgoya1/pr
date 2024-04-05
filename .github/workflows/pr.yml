@@ -3,7 +3,7 @@ name: Create Pull Request
 on:
   workflow_dispatch:
   schedule:
-    - cron: '14 10 * * *'  # Run every day at 4:10 AM IST (10:10 PM UTC)
+    - cron: '51 10 * * *'  # Run every day at 4:10 AM IST (10:10 PM UTC)
 
 jobs:
   create_pr:
