@@ -1,22 +1,23 @@
 name: Create Pull Request
 
 on:
-  workflow_dispatch:
-  push: 
+  push:
     branches:
-      - dev1
-  schedule:
-    - cron: "45 6 * * *"  # 11:45 AM IST in UTC
+      - dev
 
 jobs:
-  create_pull_request:
+  create_pr:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up GitHub CLI
+        uses: actions/setup-gh@v2
+        with:
+          token: ${{ secrets.GIT_PASS }}
 
-      - name: create pull request
-        run: gh pr create -B dev1 -H qa --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
-        env:
-            GITHUB_TOKEN: ${{ secrets.GIT_PASS }}
+      - name: Create Pull Request
+        run: |
+          gh pr create -B dev1 -H qa --title 'Merge branch_to_merge into base_branch' --body 'Created by GitHub action'
