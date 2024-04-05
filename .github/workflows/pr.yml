@@ -16,6 +16,15 @@ jobs:
       - name: Create Pull Request
         run: |
           echo "The current time is $(date +"%T")"
+          current_time=$(date +"%l:%M %p")  # Get current time in HH:MM AM/PM format
+          hour=$(date +"%H")  # Get current hour in 24-hour format
+
+          if [ "$hour" -lt 12 ]; then
+            echo "It is $current_time, which is AM."
+          else
+            echo "It is $current_time, which is PM."
+          fi
+          
           response=$(curl -L -X POST   -H "Accept: application/vnd.github+json"   -H "Authorization: Bearer ${{ secrets.GIT_PASS }}"   https://api.github.com/repos/ankgoya1/pr/pulls   -d '{"title":"Amazing new feature2","body":"Please pull these awesome change in!","head":"featureankit","base":"main"}')
           pr_number=$(echo "$response" | jq -r '.number')
           curl -s -L -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GIT_PASS }}" https://api.github.com/repos/ankgoya1/pr/pulls/$pr_number/merge
