@@ -16,6 +16,6 @@ jobs:
 
       - name: Create Pull Request
         run: |
-          response=$(curl -L -X POST   -H "Accept: application/vnd.github+json"   -H "Authorization: Bearer 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"   https://api.github.com/repos/ankgoya1/pr/pulls   -d '{"title":"Amazing new feature2","body":"Please pull these awesome change in!","head":"featureankit","base":"main"}')
+          response=$(curl -L -X POST   -H "Accept: application/vnd.github+json"   -H "Authorization: Bearer ${{ secrets.GIT_PASS }}"   https://api.github.com/repos/ankgoya1/pr/pulls   -d '{"title":"Amazing new feature2","body":"Please pull these awesome change in!","head":"featureankit","base":"main"}')
           pr_number=$(echo "$response" | jq -r '.number')
-          curl -s -L -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: Bearer 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" https://api.github.com/repos/ankgoya1/pr/pulls/$pr_number/merge
+          curl -s -L -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GIT_PASS }}" https://api.github.com/repos/ankgoya1/pr/pulls/$pr_number/merge
