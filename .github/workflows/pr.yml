@@ -39,6 +39,6 @@ jobs:
 
       - name: Create Repository
         run: |
-          gh repo create ankgoya1/Hello-World \
+          gh repo create ankgoya1/Hello-World1 \
             --description "This is your first repository" \
             --public
