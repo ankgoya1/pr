@@ -30,9 +30,6 @@ jobs:
           # curl -s -L -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${{ secrets.GIT_PASS }}" https://api.github.com/repos/ankgoya1/pr/pulls/$pr_number/merge
       - name: Create Repository
         run: |
-          gh repo create ankgoya1/Hello-World \
-            --description "This is your first repository" \
-            --private=false \
-            --confirm
+          gh repo create ankgoya1/Hello-World --description "This is your first repository" --public
             
        
